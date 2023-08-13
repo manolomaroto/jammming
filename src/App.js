@@ -1,10 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
 import PlayList from './components/PlayList/PlayList';
 import SearchBar from './components/SearchBar/SearchBar';
-import SearchResults from './components/Searchresults/SearchResults';
-import Track from './components/Track/Track';
+import SearchResults from './components/Searchresults/SearchResults'
 import TrackList from './components/TrackList/TrackList';
+
+const tracks = [
+  {name: 'Espiritu', artist: 'Bumbu', album: 'Espiritu', id: '01' },
+  {name: 'Aves', artist: 'Descanso', album: 'Matinales', id: '02' },
+  {name: 'Kancion', artist: 'Ayer', album: 'Desde', id: '03' },
+];
 
 function App() {
   return (
@@ -13,8 +17,7 @@ function App() {
       <PlayList />
       <SearchBar />
       <SearchResults />
-      <Track />
-      <TrackList />
+      <TrackList pistas={tracks}/>
     </div>
   );
 }

@@ -1,9 +1,13 @@
 import React from 'react';
 import styles from './Track.module.css';
 
-const Track = () => {
+const Track = ({pista}) => {
     return (
-        <p className={styles.track}>Track</p>
+        <li className={styles.track}>
+           <h2>{pista.name}</h2>
+           <h3>{pista.artist}</h3>
+           <h3>{pista.album}</h3>
+        </li>
     )
 }
 

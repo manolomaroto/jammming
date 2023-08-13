@@ -1,4 +1,5 @@
 .trackList {
     color: brown;
     font-size: small;
+    list-style: none;
 }
