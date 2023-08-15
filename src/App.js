@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import './App.css';
 import PlayList from './components/PlayList/PlayList';
 import SearchBar from './components/SearchBar/SearchBar';
@@ -11,9 +12,29 @@ const tracks = [
 ];
 
 function App() {
+  const [userList, setUserList] = useState([]);
+  const [userSearch, setUserSearch] = useState('');
+
+  const handleUserList = () => {
+    setUserList(list => [...list, userSearch]);
+    setUserSearch('');
+  }
+
+  const handleInputChange = (e) => {
+    setUserSearch(e.target.value);
+  }
+
   return (
     <div className="App">
-      <h1>Ey</h1>
+      <h1>Jammming</h1>
+      <div>
+        <input 
+          type="text"
+          value={userSearch}
+          onChange={handleInputChange}
+          />
+        <button onClick={handleUserList}>Buscar</button>
+      </div>
       <PlayList />
       <SearchBar />
       <SearchResults />
