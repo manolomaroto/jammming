@@ -35,7 +35,7 @@ function App() {
           />
         <button onClick={handleUserList}>Buscar</button>
       </div>
-      <PlayList />
+      <PlayList playlist={tracks}/>
       <SearchBar />
       <SearchResults />
       <TrackList pistas={tracks}/>
