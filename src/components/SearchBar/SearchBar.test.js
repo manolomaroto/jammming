@@ -4,6 +4,6 @@ import SearchBar from './SearchBar';
 
 it('Renders SearchBar', () => {
     const { getByText } = render(<SearchBar />);
-    const elemento = getByText('SearchBar');
+    const elemento = getByText('Buscar');
     expect(elemento).toBeInTheDocument();
 })

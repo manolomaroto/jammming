@@ -12,31 +12,15 @@ const tracks = [
 ];
 
 function App() {
-  const [userList, setUserList] = useState([]);
-  const [userSearch, setUserSearch] = useState('');
-
-  const handleUserList = () => {
-    setUserList(list => [...list, userSearch]);
-    setUserSearch('');
-  }
-
-  const handleInputChange = (e) => {
-    setUserSearch(e.target.value);
-  }
 
   return (
     <div className="App">
       <h1>Jammming</h1>
       <div>
-        <input 
-          type="text"
-          value={userSearch}
-          onChange={handleInputChange}
-          />
-        <button onClick={handleUserList}>Buscar</button>
+        <SearchBar />
       </div>
       <PlayList playlist={tracks}/>
-      <SearchBar />
+      
       <SearchResults />
       <TrackList pistas={tracks}/>
     </div>
