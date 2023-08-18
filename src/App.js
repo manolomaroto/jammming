@@ -6,12 +6,23 @@ import SearchResults from './components/Searchresults/SearchResults'
 import TrackList from './components/TrackList/TrackList';
 
 const tracks = [
-  {name: 'Espiritu', artist: 'Bumbu', album: 'Espiritu', id: '01' },
-  {name: 'Aves', artist: 'Descanso', album: 'Matinales', id: '02' },
-  {name: 'Kancion', artist: 'Ayer', album: 'Desde', id: '03' },
+  {name: 'Espiritu', artist: 'Bumbu', album: 'Espiritu', id: '0' },
+  {name: 'Aves', artist: 'Descanso', album: 'Matinales', id: '1' },
+  {name: 'Kancion', artist: 'Ayer', album: 'Desde', id: '2' },
 ];
 
 function App() {
+
+  const [tracksSelected, setTracksSelected] = useState([]);
+
+  const handleTracksSelected = (e => {
+    if(tracksSelected.some(item => item.id == e.target.id)){
+      return;
+    }
+    const cancionSeleccionada = tracks.filter(item => item.id == e.target.id)
+    setTracksSelected(canciones => [...canciones, cancionSeleccionada[0]]);
+    console.log(tracksSelected)
+  })
 
   return (
     <div className="App">
@@ -19,10 +30,10 @@ function App() {
       <div>
         <SearchBar />
       </div>
-      <PlayList playlist={tracks}/>
+      <PlayList playlist={tracksSelected}/>
       
       <SearchResults />
-      <TrackList pistas={tracks}/>
+      <TrackList pistas={tracks} handleTracksSelected={handleTracksSelected}/>
     </div>
   );
 }
