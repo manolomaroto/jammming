@@ -21,8 +21,12 @@ function App() {
     }
     const cancionSeleccionada = tracks.filter(item => item.id == e.target.id)
     setTracksSelected(canciones => [...canciones, cancionSeleccionada[0]]);
-    console.log(tracksSelected)
-  })
+  });
+
+  const removeTrack = (e) => {
+    const cancionesFiltradas = tracksSelected.filter( item => item.id !== e.target.id);
+    setTracksSelected([...cancionesFiltradas]);
+  }
 
   return (
     <div className="App">
@@ -30,10 +34,9 @@ function App() {
       <div>
         <SearchBar />
       </div>
-      <PlayList playlist={tracksSelected}/>
-      
       <SearchResults />
       <TrackList pistas={tracks} handleTracksSelected={handleTracksSelected}/>
+      <PlayList playlist={tracksSelected} handleRemoveTrack={removeTrack}/>
     </div>
   );
 }
