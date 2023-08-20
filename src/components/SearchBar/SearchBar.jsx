@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import styles from './SearchBar.module.css';
 
-const SearchBar = () => {
-    const [userList, setUserList] = useState([]);
+const SearchBar = ({handleSearchTerm}) => {
     const [userSearch, setUserSearch] = useState('');
   
-    const handleUserList = () => {
-      setUserList(list => [...list, userSearch]);
-      setUserSearch('');
+    const handleInputChange = (e) => {
+        setUserSearch(e.target.value);
+      }
+
+    const sendSearchTerm = () => {
+        handleSearchTerm(userSearch);
     }
   
-    const handleInputChange = (e) => {
-      setUserSearch(e.target.value);
-    }
     return (
         <>
             <input 
@@ -20,7 +19,7 @@ const SearchBar = () => {
             value={userSearch}
             onChange={handleInputChange}
             />
-            <button onClick={handleUserList}>Buscar</button>
+            <button onClick={sendSearchTerm}>Buscar</button>
         </>
     )
 }

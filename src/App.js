@@ -4,6 +4,7 @@ import PlayList from './components/PlayList/PlayList';
 import SearchBar from './components/SearchBar/SearchBar';
 import SearchResults from './components/Searchresults/SearchResults'
 import TrackList from './components/TrackList/TrackList';
+import { fetchSongs } from './services/accessapi';
 
 const tracks = [
   {name: 'Espiritu', artist: 'Bumbu', album: 'Espiritu', id: '0', uri: "spotify:album:2up3OPMp9Tb4dAKM2erWXQ" },
@@ -15,6 +16,7 @@ function App() {
 
   const [tracksSelected, setTracksSelected] = useState([]);
   const [listName, setListName] = useState('Mi lista');
+
 
   const handleTracksSelected = (e => {
     if(tracksSelected.some(item => item.id == e.target.id)){
@@ -39,15 +41,27 @@ function App() {
     setTracksSelected([]);
   }
 
+  const getData = async (e) => {
+    const data = await fetchSongs(e);
+    console.log(data);
+  }
+
+  const handleInputChange = (e) => {
+    getData(e);
+  }
+
+ 
+
   return (
     <div className="App">
       <h1>Jammming</h1>
       <div>
-        <SearchBar />
+        <SearchBar handleSearchTerm={handleInputChange} />
       </div>
       <SearchResults />
       <TrackList pistas={tracks} handleTracksSelected={handleTracksSelected}/>
       <PlayList handleListName={handleListName} listName={listName} playlist={tracksSelected} handleRemoveTrack={removeTrack} handleListArray={handleListArray}/>
+      <button onClick={getData}>Busca</button>
     </div>
   );
 }
