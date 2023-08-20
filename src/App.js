@@ -6,19 +6,21 @@ import SearchResults from './components/Searchresults/SearchResults'
 import TrackList from './components/TrackList/TrackList';
 import { fetchSongs } from './services/accessapi';
 
-const tracks = [
+/* const tracks = [
   {name: 'Espiritu', artist: 'Bumbu', album: 'Espiritu', id: '0', uri: "spotify:album:2up3OPMp9Tb4dAKM2erWXQ" },
   {name: 'Aves', artist: 'Descanso', album: 'Matinales', id: '1', uri: "spotify:album:2up3OPMp9Tb4dAKM2erWXQ" },
   {name: 'Kancion', artist: 'Ayer', album: 'Desde', id: '2', uri: "spotify:album:2up3OPMp9Tb4dAKM2erWXQ" },
-];
+]; */
 
 function App() {
 
   const [tracksSelected, setTracksSelected] = useState([]);
   const [listName, setListName] = useState('Mi lista');
+  const [tracks, setTracks] = useState([]);
 
 
   const handleTracksSelected = (e => {
+    console.log(e.target)
     if(tracksSelected.some(item => item.id == e.target.id)){
       return;
     }
@@ -37,13 +39,15 @@ function App() {
 
   const handleListArray = () => {
     const listUri = tracksSelected.map(track => track.uri);
-    console.log(listUri)
     setTracksSelected([]);
   }
 
   const getData = async (e) => {
     const data = await fetchSongs(e);
-    console.log(data);
+    const results = data.tracks.items.map(item => {
+      return {name: item.name, artist: item.artists[0].name, album: item.album.name, id: item.id, uri: item.uri}
+    });
+    setTracks(results);
   }
 
   const handleInputChange = (e) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Track.module.css';
 
 const Track = ({pista, handleTracksSelected}) => {
+    console.log(pista)
     return (
         <li className={styles.track}>
            <h2>{pista.name}</h2>
