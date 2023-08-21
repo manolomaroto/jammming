@@ -5,6 +5,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import SearchResults from './components/Searchresults/SearchResults'
 import TrackList from './components/TrackList/TrackList';
 import { fetchSongs } from './services/accessapi';
+import 'materialize-css/dist/css/materialize.min.css';
 
 /* const tracks = [
   {name: 'Espiritu', artist: 'Bumbu', album: 'Espiritu', id: '0', uri: "spotify:album:2up3OPMp9Tb4dAKM2erWXQ" },
@@ -57,15 +58,18 @@ function App() {
  
 
   return (
-    <div className="App">
+    <div className="App container">
       <h1>Jammming</h1>
-      <div>
-        <SearchBar handleSearchTerm={handleInputChange} />
+      <div className='row'>
+        <div className='col s6'>
+          <h2>Buscador</h2>
+          <SearchBar handleSearchTerm={handleInputChange} />
+          <TrackList pistas={tracks} handleTracksSelected={handleTracksSelected}/>
+        </div>
+        <div className='col s6'>
+          <PlayList handleListName={handleListName} listName={listName} playlist={tracksSelected} handleRemoveTrack={removeTrack} handleListArray={handleListArray}/>
+        </div>
       </div>
-      <SearchResults />
-      <TrackList pistas={tracks} handleTracksSelected={handleTracksSelected}/>
-      <PlayList handleListName={handleListName} listName={listName} playlist={tracksSelected} handleRemoveTrack={removeTrack} handleListArray={handleListArray}/>
-      <button onClick={getData}>Busca</button>
     </div>
   );
 }
