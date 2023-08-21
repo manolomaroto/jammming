@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import './App.css';
 import PlayList from './components/PlayList/PlayList';
 import SearchBar from './components/SearchBar/SearchBar';
-import SearchResults from './components/Searchresults/SearchResults'
 import TrackList from './components/TrackList/TrackList';
-import { fetchSongs } from './services/accessapi';
+import { fetchSongs, saveList } from './services/accessapi';
 import 'materialize-css/dist/css/materialize.min.css';
 
 /* const tracks = [
@@ -21,7 +20,6 @@ function App() {
 
 
   const handleTracksSelected = (e => {
-    console.log(e.target)
     if(tracksSelected.some(item => item.id == e.target.id)){
       return;
     }
@@ -40,6 +38,7 @@ function App() {
 
   const handleListArray = () => {
     const listUri = tracksSelected.map(track => track.uri);
+    // Añadir el método para enviar el nombre de la lista y luego las canciones
     setTracksSelected([]);
   }
 

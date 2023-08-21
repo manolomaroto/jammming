@@ -16,3 +16,7 @@ export const fetchSongs = async (search) => {
         throw error;
     }
 }
+
+export const saveList = () => {
+    
+}

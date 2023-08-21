@@ -17,7 +17,7 @@ const PlayList = ({playlist, handleRemoveTrack, listName, handleListName, handle
                 )
                 
             }
-            <a className="waves-effect waves-light btn" onClick={handleListArray}>Guardar Lista</a>
+            <a className="waves-effect waves-light btn" onClick={handleListArray} disabled={playlist.length === 0}>Guardar Lista</a>
         </ul>
     )
 }
