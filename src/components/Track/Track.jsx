@@ -4,12 +4,20 @@ import styles from './Track.module.css';
 const Track = ({pista, handleTracksSelected}) => {
     console.log(pista)
     return (
-        <li className={styles.track}>
-           <h2>{pista.name}</h2>
-           <h3>{pista.artist}</h3>
-           <h3>{pista.album}</h3>
-           <button onClick={handleTracksSelected} id={pista.id}>Añadir</button>
-        </li>
+        <div className={`row ${styles.track}`}>
+            <div className="col s12">
+            <div className="card  teal darken-3">
+                <div className="card-content white-text">
+                <span className="card-title">{pista.name}</span>
+                    <p class="collection-item">{pista.artist}</p>
+                    <p class="collection-item">{pista.album}</p>
+                </div>
+                <div className="card-action">
+                <a onClick={handleTracksSelected} id={pista.id}>Añadir</a>
+                </div>
+            </div>
+            </div>
+        </div>
     )
 }
 

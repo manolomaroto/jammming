@@ -19,7 +19,7 @@ const SearchBar = ({handleSearchTerm}) => {
             value={userSearch}
             onChange={handleInputChange}
             />
-            <button onClick={sendSearchTerm}>Buscar</button>
+            <a className="waves-effect waves-light btn" onClick={sendSearchTerm}>Buscar</a>
         </>
     )
 }

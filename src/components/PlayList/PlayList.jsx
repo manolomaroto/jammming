@@ -1,22 +1,23 @@
 import React from 'react';
 import styles from './PlayList.module.css';
+import { MdPlaylistRemove } from "react-icons/md";
 
 const PlayList = ({playlist, handleRemoveTrack, listName, handleListName, handleListArray}) => {
     return (
         <ul className={styles.playlist}>
-            <h3>{listName}</h3>
+            <h2>{listName}</h2>
             <input placeholder='Cambia el nombre' onChange={handleListName}/>
             {
                 playlist.map( (track, index )=> { 
                     return(
-                    <div key={index}>
-                        <p >{track.name}</p><b id={track.id} onClick={handleRemoveTrack}>-</b>
-                    </div>)
+                    <ul className='collection' key={index}>
+                        <li style={{display: "flex", justifyContent: "space-between", margin: "10px"}}><span >{track.name}</span><MdPlaylistRemove id={track.id} onClick={handleRemoveTrack}/></li>
+                    </ul>)
                 }
                 )
                 
             }
-            <button onClick={handleListArray}>Guardar Lista</button>
+            <a className="waves-effect waves-light btn" onClick={handleListArray}>Guardar Lista</a>
         </ul>
     )
 }
