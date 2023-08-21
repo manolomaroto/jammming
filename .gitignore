@@ -11,6 +11,9 @@
 # production
 /build
 
+# Token
+/src/services/token.js
+
 # misc
 .DS_Store
 .env.local
